@@ -1,7 +1,7 @@
-package com.prueba_metrica.demo_proveedores.interfaces;
+package com.inditex.demo.endpoint.interfaces;
 
-import com.prueba_metrica.demo_proveedores.domain.ProveedorService;
-import com.prueba_metrica.demo_proveedores.infrastructure.entity.Proveedor;
+import com.inditex.demo.endpoint.domain.PricesService;
+import com.inditex.demo.endpoint.infrastructure.entity.Prices;
 import org.junit.jupiter.api.Test;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,24 +18,24 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(ProveedorController.class)
-class ProveedorControllerTest {
+@WebMvcTest(PricesController.class)
+class PricesControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @MockBean
-    private ProveedorService proveedorService;
+    private PricesService pricesService;
 
     @Test
     void shouldReturnProveedoresForGivenIdCliente() throws Exception {
 
         // GIVEN
-        Proveedor proveedor1 = new Proveedor(1L, "Proveedor A", LocalDate.now(), 101L);
-        Proveedor proveedor2 = new Proveedor(2L, "Proveedor B", LocalDate.now(), 101L);
+        Prices prices1 = new Prices(1L, "Proveedor A", LocalDate.now(), 101L);
+        Prices prices2 = new Prices(2L, "Proveedor B", LocalDate.now(), 101L);
 
         // WHEN
-        when(proveedorService.obtenerProveedoresPorCliente(101L)).thenReturn(List.of(proveedor1, proveedor2));
+        when(pricesService.obtenerProveedoresPorCliente(101L)).thenReturn(List.of(prices1, prices2));
 
         // THEN
         mockMvc.perform(get("/proveedores/101"))

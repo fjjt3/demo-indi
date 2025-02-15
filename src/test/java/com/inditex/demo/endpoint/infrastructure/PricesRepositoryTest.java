@@ -1,6 +1,6 @@
-package com.prueba_metrica.demo_proveedores.infrastructure;
+package com.inditex.demo.endpoint.infrastructure;
 
-import com.prueba_metrica.demo_proveedores.infrastructure.entity.Proveedor;
+import com.inditex.demo.endpoint.infrastructure.entity.Prices;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -10,16 +10,16 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
-class ProveedorRepositoryTest {
+class PricesRepositoryTest {
 
     @Autowired
-    private ProveedorRepository proveedorRepository;
+    private PricesRepository pricesRepository;
 
     @Test
     void shouldFindProveedoresByIdCliente() {
 
         // WHEN
-        List<Proveedor> result = proveedorRepository.findByClientId(5L);
+        List<Prices> result = pricesRepository.findByClientId(5L);
 
         // THEN
         assertThat(result).hasSize(2);
