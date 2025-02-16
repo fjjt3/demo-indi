@@ -25,19 +25,17 @@ public class PricesController {
     public ResponseEntity<Prices> getApplicablePrice(
             @RequestParam Long brandId,
             @RequestParam Long productId,
-            @RequestParam String applicationDate) {  // Ahora acepta la fecha como String
+            @RequestParam String applicationDate) {
 
         LocalDateTime parsedDate;
         try {
-            // Convertir el String a LocalDateTime
+
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
             parsedDate = LocalDateTime.parse(applicationDate, formatter);
         } catch (DateTimeParseException e) {
-            // Manejar el error de formato de fecha
             return ResponseEntity.badRequest().build();
         }
 
-        // Llamar al servicio con la fecha convertida
         Prices applicablePrice = pricesService.getApplicablePrice(brandId, productId, parsedDate);
 
         if (applicablePrice != null) {

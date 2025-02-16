@@ -33,7 +33,7 @@ public class PricesControllerTest {
 
     @Test
     public void test1_10amDay14() throws Exception {
-        // Configurar el comportamiento esperado del servicio
+
         Prices expectedPrice = new Prices();
         expectedPrice.setBrandId(1L);
         expectedPrice.setProductId(35455L);
@@ -46,7 +46,6 @@ public class PricesControllerTest {
         when(pricesService.getApplicablePrice(eq(1L), eq(35455L), any(LocalDateTime.class)))
                 .thenReturn(expectedPrice);
 
-        // Realizar la petición y validar la respuesta
         mockMvc.perform(get("/prices/applicable-price")
                         .param("brandId", "1")
                         .param("productId", "35455")
@@ -61,7 +60,7 @@ public class PricesControllerTest {
 
     @Test
     public void test2_4pmDay14() throws Exception {
-        // Configurar el comportamiento esperado del servicio
+
         Prices expectedPrice = new Prices();
         expectedPrice.setBrandId(1L);
         expectedPrice.setProductId(35455L);
@@ -74,7 +73,6 @@ public class PricesControllerTest {
         when(pricesService.getApplicablePrice(eq(1L), eq(35455L), any(LocalDateTime.class)))
                 .thenReturn(expectedPrice);
 
-        // Realizar la petición y validar la respuesta
         mockMvc.perform(get("/prices/applicable-price")
                         .param("brandId", "1")
                         .param("productId", "35455")
@@ -112,5 +110,58 @@ public class PricesControllerTest {
                 .andExpect(jsonPath("$.curr").value("EUR"));
     }
 
-    // Faltan tests ( Test 4, Test 5)
+    @Test
+    public void test4_10amDay15() throws Exception {
+
+        Prices expectedPrice = new Prices();
+        expectedPrice.setBrandId(1L);
+        expectedPrice.setProductId(35455L);
+        expectedPrice.setPriceList(3L);
+        expectedPrice.setStartDate(LocalDateTime.of(2023, 10, 15, 0, 0));
+        expectedPrice.setEndDate(LocalDateTime.of(2023, 10, 15, 11, 0));
+        expectedPrice.setPrice(new BigDecimal("30.50"));
+        expectedPrice.setCurr("EUR");
+
+        when(pricesService.getApplicablePrice(eq(1L), eq(35455L), any(LocalDateTime.class)))
+                .thenReturn(expectedPrice);
+
+
+        mockMvc.perform(get("/prices/applicable-price")
+                        .param("brandId", "1")
+                        .param("productId", "35455")
+                        .param("applicationDate", "2023-10-15T10:00:00"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.brandId").value(1))
+                .andExpect(jsonPath("$.productId").value(35455))
+                .andExpect(jsonPath("$.priceList").value(3))
+                .andExpect(jsonPath("$.price").value(30.50))
+                .andExpect(jsonPath("$.curr").value("EUR"));
+    }
+
+    @Test
+    public void test5_9pmDay16() throws Exception {
+
+        Prices expectedPrice = new Prices();
+        expectedPrice.setBrandId(1L);
+        expectedPrice.setProductId(35455L);
+        expectedPrice.setPriceList(4L);
+        expectedPrice.setStartDate(LocalDateTime.of(2023, 10, 16, 21, 0));
+        expectedPrice.setEndDate(LocalDateTime.of(2023, 10, 16, 23, 59, 59));
+        expectedPrice.setPrice(new BigDecimal("38.95"));
+        expectedPrice.setCurr("EUR");
+
+        when(pricesService.getApplicablePrice(eq(1L), eq(35455L), any(LocalDateTime.class)))
+                .thenReturn(expectedPrice);
+
+        mockMvc.perform(get("/prices/applicable-price")
+                        .param("brandId", "1")
+                        .param("productId", "35455")
+                        .param("applicationDate", "2023-10-16T21:00:00"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.brandId").value(1))
+                .andExpect(jsonPath("$.productId").value(35455))
+                .andExpect(jsonPath("$.priceList").value(4))
+                .andExpect(jsonPath("$.price").value(38.95))
+                .andExpect(jsonPath("$.curr").value("EUR"));
+    }
 }

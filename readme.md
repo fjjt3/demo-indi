@@ -1,10 +1,9 @@
-# Providers Microservice Demo
+# Prices Services Demo
 
-This is a simple implementation for a Restful Microservice based on Spring Boot to manage clients and providers
-relationship.
+This is a simple implementation for a Restful Microservice based on Spring Boot to manage prices and dates.
 
 ## Features
-- Simple Restful endpoint to retrieve client´s providers given a Client´s id 
+- Simple Restful endpoint to show prices based on input data
 - H2 in-memory database with pre-loading data 
 - Spring Boot, Sprint Data.
 
@@ -32,7 +31,7 @@ mvn -version
 
 Clone the repository
 ```bash
-  git clone https://github.com/fjjt3/demo-proveedores.git
+  git clone https://github.com/fjjt3/demo-indi.git
   cd demo-proveedores
   ```
 Build the application
@@ -93,7 +92,7 @@ springdoc.swagger-ui.enabled=true
 
 | HTTP Method | Endpoint                  | Description                      |
 |-------------|---------------------------|----------------------------------|
-| GET         | `/proveedores/{id}`       | Get providers by client ID.      |
+| GET         | `/applicable-price`       | Get providers by client ID.      |
 ```
 
 ## Testing
