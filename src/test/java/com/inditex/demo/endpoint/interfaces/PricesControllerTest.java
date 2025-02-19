@@ -38,8 +38,8 @@ public class PricesControllerTest {
         expectedPrice.setBrandId(1L);
         expectedPrice.setProductId(35455L);
         expectedPrice.setPriceList(1L);
-        expectedPrice.setStartDate(LocalDateTime.of(2023, 10, 14, 0, 0));
-        expectedPrice.setEndDate(LocalDateTime.of(2023, 10, 14, 23, 59, 59));
+        expectedPrice.setStartDate(LocalDateTime.of(2020, 06, 14, 0, 0));
+        expectedPrice.setEndDate(LocalDateTime.of(2020, 12, 31, 23, 59, 59));
         expectedPrice.setPrice(new BigDecimal("35.50"));
         expectedPrice.setCurr("EUR");
 
@@ -49,7 +49,7 @@ public class PricesControllerTest {
         mockMvc.perform(get("/prices/applicable-price")
                         .param("brandId", "1")
                         .param("productId", "35455")
-                        .param("applicationDate", "2023-10-14T10:00:00"))
+                        .param("applicationDate", "2020-06-14T10:00:00"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.brandId").value(1))
                 .andExpect(jsonPath("$.productId").value(35455))
@@ -65,8 +65,8 @@ public class PricesControllerTest {
         expectedPrice.setBrandId(1L);
         expectedPrice.setProductId(35455L);
         expectedPrice.setPriceList(2L);
-        expectedPrice.setStartDate(LocalDateTime.of(2023, 10, 14, 15, 0));
-        expectedPrice.setEndDate(LocalDateTime.of(2023, 10, 14, 18, 30));
+        expectedPrice.setStartDate(LocalDateTime.of(2020, 06, 14, 15, 0));
+        expectedPrice.setEndDate(LocalDateTime.of(2020, 06, 14, 18, 30));
         expectedPrice.setPrice(new BigDecimal("25.45"));
         expectedPrice.setCurr("EUR");
 
@@ -76,7 +76,7 @@ public class PricesControllerTest {
         mockMvc.perform(get("/prices/applicable-price")
                         .param("brandId", "1")
                         .param("productId", "35455")
-                        .param("applicationDate", "2023-10-14T16:00:00"))
+                        .param("applicationDate", "2020-06-14T16:00:00"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.brandId").value(1))
                 .andExpect(jsonPath("$.productId").value(35455))
@@ -90,8 +90,8 @@ public class PricesControllerTest {
         expectedPrice.setBrandId(1L);
         expectedPrice.setProductId(35455L);
         expectedPrice.setPriceList(1L);
-        expectedPrice.setStartDate(LocalDateTime.of(2023, 10, 14, 0, 0));
-        expectedPrice.setEndDate(LocalDateTime.of(2023, 10, 14, 23, 59, 59));
+        expectedPrice.setStartDate(LocalDateTime.of(2020, 06, 14, 0, 0));
+        expectedPrice.setEndDate(LocalDateTime.of(2020, 06, 14, 23, 59, 59));
         expectedPrice.setPrice(new BigDecimal("35.50"));
         expectedPrice.setCurr("EUR");
 
@@ -101,7 +101,7 @@ public class PricesControllerTest {
         mockMvc.perform(get("/prices/applicable-price")
                         .param("brandId", "1")
                         .param("productId", "35455")
-                        .param("applicationDate", "2023-10-14T21:00:00"))
+                        .param("applicationDate", "2020-06-14T21:00:00"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.brandId").value(1))
                 .andExpect(jsonPath("$.productId").value(35455))
@@ -117,8 +117,8 @@ public class PricesControllerTest {
         expectedPrice.setBrandId(1L);
         expectedPrice.setProductId(35455L);
         expectedPrice.setPriceList(3L);
-        expectedPrice.setStartDate(LocalDateTime.of(2023, 10, 15, 0, 0));
-        expectedPrice.setEndDate(LocalDateTime.of(2023, 10, 15, 11, 0));
+        expectedPrice.setStartDate(LocalDateTime.of(2020, 06, 15, 0, 0));
+        expectedPrice.setEndDate(LocalDateTime.of(2020, 06, 15, 11, 0));
         expectedPrice.setPrice(new BigDecimal("30.50"));
         expectedPrice.setCurr("EUR");
 
@@ -129,7 +129,7 @@ public class PricesControllerTest {
         mockMvc.perform(get("/prices/applicable-price")
                         .param("brandId", "1")
                         .param("productId", "35455")
-                        .param("applicationDate", "2023-10-15T10:00:00"))
+                        .param("applicationDate", "2020-06-15T10:00:00"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.brandId").value(1))
                 .andExpect(jsonPath("$.productId").value(35455))
@@ -145,8 +145,8 @@ public class PricesControllerTest {
         expectedPrice.setBrandId(1L);
         expectedPrice.setProductId(35455L);
         expectedPrice.setPriceList(4L);
-        expectedPrice.setStartDate(LocalDateTime.of(2023, 10, 16, 21, 0));
-        expectedPrice.setEndDate(LocalDateTime.of(2023, 10, 16, 23, 59, 59));
+        expectedPrice.setStartDate(LocalDateTime.of(2020, 06, 15, 21, 0));
+        expectedPrice.setEndDate(LocalDateTime.of(2020, 06, 15, 23, 59, 59));
         expectedPrice.setPrice(new BigDecimal("38.95"));
         expectedPrice.setCurr("EUR");
 
@@ -156,7 +156,7 @@ public class PricesControllerTest {
         mockMvc.perform(get("/prices/applicable-price")
                         .param("brandId", "1")
                         .param("productId", "35455")
-                        .param("applicationDate", "2023-10-16T21:00:00"))
+                        .param("applicationDate", "2020-06-16T21:00:00"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.brandId").value(1))
                 .andExpect(jsonPath("$.productId").value(35455))

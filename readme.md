@@ -32,7 +32,7 @@ mvn -version
 Clone the repository
 ```bash
   git clone https://github.com/fjjt3/demo-indi.git
-  cd demo-proveedores
+  cd demo-indi
   ```
 Build the application
 ```bash
@@ -42,7 +42,7 @@ mvn clean package
 Start the application
 
 ```bash
-java -jar target/demo-proveedores-0.0.1-SNAPSHOT.jar
+java -jar target/demo-indi-0.0.1-SNAPSHOT.jar
 mvn spring-boot:run
 ```
 
@@ -92,7 +92,7 @@ springdoc.swagger-ui.enabled=true
 
 | HTTP Method | Endpoint                  | Description                      |
 |-------------|---------------------------|----------------------------------|
-| GET         | `/applicable-price`       | Get providers by client ID.      |
+| GET         | `/prices/applicable-price`       | Get providers by client ID.      |
 ```
 
 ## Testing
